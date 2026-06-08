@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>zer0try Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+:root {
+  --black: #0a0a0a;
+  --off-white: #f5f4f0;
+  --gray-100: #1a1a1a;
+  --gray-200: #2e2e2e;
+  --gray-400: #5a5a5a;
+  --gray-500: #888;
+  --gray-600: #b0b0b0;
+  --gray-700: #d4d4d4;
+  --gray-800: #e8e8e4;
+  --gray-900: #f0f0ec;
+  --white: #ffffff;
+  --success: #00a85a;
+  --danger: #d45000;
+  --warning: #b07800;
+  --info: #1760a8;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(245, 244, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--gray-700);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-logo {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--black);
+  text-decoration: none;
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  text-decoration: none;
+  padding: 8px 16px;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: var(--black); }
+.nav-link.active { color: var(--black); }
+.nav-version {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-600);
+  background: var(--gray-800);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 1rem;
+}
+
+/* ── LAYOUT ── */
+.site-body {
+  display: flex;
+  min-height: calc(100vh - 56px);
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  border-right: 0.5px solid var(--gray-700);
+  padding: 2rem 0;
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  background: var(--white);
+}
+.sidebar-section {
+  margin-bottom: 1.75rem;
+  padding: 0 1.25rem;
+}
+.sidebar-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.sidebar-item {
+  display: block;
+  font-size: 13px;
+  color: var(--gray-400);
+  text-decoration: none;
+  padding: 5px 0;
+  transition: color 0.12s;
+  border-left: 2px solid transparent;
+  padding-left: 8px;
+  margin-left: -10px;
+}
+.sidebar-item:hover { color: var(--black); }
+.sidebar-item.active {
+  color: var(--black);
+  border-left-color: var(--black);
+  font-weight: 500;
+}
+
+/* ── MAIN CONTENT ── */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 3rem 3.5rem;
+  max-width: 860px;
+}
+
+/* ── HERO SECTION ── */
+.hero {
+  background: var(--black);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 340px; height: 340px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: 80px;
+  width: 480px; height: 480px;
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 50%;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1.25rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--off-white);
+  margin-bottom: 1rem;
+}
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.75;
+  max-width: 420px;
+}
+.hero-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.hero-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  border: 0.5px solid rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── CHAPTER TABS ── */
+.chapter-tabs {
+  display: flex;
+  border-bottom: 0.5px solid var(--gray-700);
+  margin-bottom: 2.5rem;
+  overflow-x: auto;
+  gap: 0;
+}
+.chapter-tab {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  padding: 10px 18px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+.chapter-tab:hover { color: var(--black); }
+.chapter-tab.on {
+  color: var(--black);
+  border-bottom-color: var(--black);
+}
+
+/* ── CONTENT SECTIONS ── */
+.content-page { display: none; }
+.content-page.on { display: block; }
+
+/* ── DESIGN RULE SUB-NAV ── */
+.sub-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.sub-nav-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  background: var(--white);
+  border: 0.5px solid var(--gray-700);
+  border-radius: 20px;
+  padding: 4px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sub-nav-btn:hover {
+  color: var(--black);
+  border-color: var(--gray-400);
+}
+
+/* ── SECTION HEADERS ── */
+.sec {
+  margin-bottom: 2.5rem;
+}
+.sec-ttl {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--black);
+}
+.sec-sub {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+.divider {
+  height: 0.5px;
+  background: var(--gray-700);
+  margin: 2.5rem 0;
+}
+
+/* ── PRINCIPLE BLOCK ── */
+.principle {
+  background: var(--black);
+  color: var(--off-white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+}
+.principle-kw {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 0.75rem;
+}
+.principle-body {
+  font-size: 13px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.75);
+}
+.principle-body strong { color: var(--off-white); font-weight: 500; }
+
+/* ── RULE BLOCK ── */
+.rule-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.rule-block:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.rule-ttl { font-size: 14px; font-weight: 500; margin-bottom: 0.35rem; }
+.rule-body { font-size: 13px; line-height: 1.85; margin-bottom: 0.5rem; }
+.rule-why {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: var(--gray-900);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  margin-top: 0.5rem;
+}
+.rule-why-lbl {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  flex-shrink: 0;
+  margin-top: 2px;
+  min-width: 30px;
+}
+.rule-why-txt { font-size: 12px; color: var(--gray-400); line-height: 1.75; }
+
+/* ── CARD / SURFACE ── */
+.card {
+  background: var(--white);
+  border: 0.5px solid var(--gray-700);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.surface {
+  background: var(--gray-900);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+}
+
+/* ── GRID ── */
+.g2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 10px; }
+.g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+
+/* ── LABEL ── */
+.lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ── COLOR SWATCHES ── */
+.sw { height: 56px; border-radius: var(--radius-sm); margin-bottom: 7px; }
+.sw-name { font-size: 12px; font-weight: 500; }
+.sw-hex { font-family: var(--font-mono); font-size: 10px; color: var(--gray-400); }
+.sw-role { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+
+/* ── CONTRAST TABLE ── */
+.cr-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.cr-row:last-child { border-bottom: none; }
+.cr-chip { width: 32px; height: 20px; border-radius: 3px; flex-shrink: 0; }
+.cr-val { font-family: var(--font-mono); font-size: 10px; color: var(--gray-400); min-width: 50px; }
+
+/* ── DARK MODE DEMO ── */
+.dm-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0.75rem 0; }
+.dm-l { background: var(--off-white); border-radius: var(--radius-sm); padding: 1rem; }
+.dm-d { background: var(--black); border-radius: var(--radius-sm); padding: 1rem; }
+.dm-lbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.dm-card { border-radius: 6px; padding: 0.55rem 0.7rem; margin-bottom: 5px; }
+
+/* ── TYPOGRAPHY SCALE ── */
+.type-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 11px 0;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.type-row:last-child { border-bottom: none; }
+.type-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-400);
+  min-width: 130px;
+  flex-shrink: 0;
+  line-height: 1.7;
+}
+
+/* ── SPACING ── */
+.sp-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 0;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.sp-row:last-child { border-bottom: none; }
+.sp-bar { background: var(--black); height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── ICON GRID ── */
+.icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+.ibox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 6px;
+  background: var(--gray-900);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--gray-400);
+  text-align: center;
+}
+.ibox i { font-size: 20px; color: var(--black); }
+
+/* ── ICON RULE ROW ── */
+.ir-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.ir-row:last-child { border-bottom: none; padding-bottom: 0; }
+.ir-demo {
+  width: 52px;
+  height: 52px;
+  background: var(--gray-900);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── MOTION TABLE ── */
+.mo-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.mo-row:last-child { border-bottom: none; }
+
+/* ── PCARD ── */
+.pcard {
+  border-left: 2px solid var(--black);
+  padding: 0.9rem 1.1rem;
+  background: var(--gray-900);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 10px;
+}
+.pcard-en { font-family: var(--font-mono); font-size: 10px; color: var(--gray-400); letter-spacing: 0.1em; margin-bottom: 3px; }
+.pcard-ttl { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
+.pcard-body { font-size: 13px; line-height: 1.75; }
+.pcard-eg { font-size: 11px; color: var(--gray-400); margin-top: 5px; font-family: var(--font-mono); }
+
+/* ── CHECKLIST ── */
+.ck-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 9px 0;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.ck-row:last-child { border-bottom: none; }
+.ck-dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--gray-900);
+  border: 0.5px solid var(--gray-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.ck-dot i { font-size: 11px; }
+.ck-t { font-size: 13px; line-height: 1.7; }
+.ck-s { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+
+/* ── BADGE ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.b-ok { background: rgba(0,168,90,.1); color: #006b38; border: 0.5px solid rgba(0,168,90,.2); }
+.b-warn { background: rgba(176,120,0,.08); color: #6b4800; border: 0.5px solid rgba(176,120,0,.18); }
+.b-err { background: rgba(212,80,0,.08); color: #8a2e00; border: 0.5px solid rgba(212,80,0,.18); }
+.b-off { background: var(--gray-900); color: var(--gray-400); border: 0.5px solid var(--gray-700); }
+.b-blk { background: var(--black); color: var(--off-white); }
+
+/* ── BUTTONS ── */
+.btn-p {
+  background: var(--black);
+  color: var(--off-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.15s;
+}
+.btn-p:hover { opacity: 0.8; }
+.btn-s {
+  background: transparent;
+  color: var(--black);
+  border: 0.5px solid var(--gray-600);
+  border-radius: var(--radius-sm);
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.btn-s:hover { border-color: var(--black); }
+
+/* ── STAT CARDS ── */
+.stat { background: var(--gray-900); border-radius: var(--radius-sm); padding: 0.9rem; }
+.stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 4px; }
+.stat-v { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+.stat-s { font-size: 11px; color: var(--gray-400); margin-top: 2px; font-family: var(--font-mono); }
+
+/* ── DO / DONT ── */
+.do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.do {
+  border-left: 2px solid var(--black);
+  background: var(--gray-900);
+  padding: 10px 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 8px;
+}
+.dont {
+  border-left: 2px solid var(--gray-700);
+  background: var(--gray-900);
+  padding: 10px 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 8px;
+}
+.wl { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 5px; }
+.wt { font-size: 13px; line-height: 1.75; }
+
+/* ── TOKEN TABLE ── */
+.tkrow {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 7px 0;
+  border-bottom: 0.5px solid var(--gray-800);
+}
+.tkrow:last-child { border-bottom: none; }
+.tkkey {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-400);
+  background: var(--gray-900);
+  border: 0.5px solid var(--gray-800);
+  border-radius: 4px;
+  padding: 2px 8px;
+  min-width: 190px;
+  flex-shrink: 0;
+  line-height: 1.9;
+}
+.tkval { color: var(--black); line-height: 1.75; font-size: 12px; }
+.tkgroup {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  padding: 10px 0 6px;
+  border-bottom: 0.5px solid var(--gray-800);
+  margin-bottom: 3px;
+}
+
+/* ── IMG DEMO ── */
+.img-demo {
+  height: 72px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+/* ── CODE ── */
+code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--gray-900);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.code-block {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--gray-900);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  line-height: 1.9;
+  color: var(--black);
+  display: block;
+  margin-top: 8px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ── AI FLOW ── */
+.ai-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+.ai-step {
+  background: var(--gray-900);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 12px;
+  line-height: 1.6;
+  flex: 1;
+  min-width: 110px;
+  text-align: center;
+}
+.ai-step-ttl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-400);
+  margin-bottom: 3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ai-arrow { font-size: 14px; color: var(--gray-600); padding: 0 6px; flex-shrink: 0; }
+
+/* ── DSEC VISIBILITY ── */
+.dsec { display: block; }
+.dsec-divider { height: 0.5px; background: var(--gray-700); margin: 2.5rem 0; }
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 0.5px solid var(--gray-700);
+  padding: 2rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+}
+.footer-logo { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--black); }
+.footer-meta { font-family: var(--font-mono); font-size: 10px; color: var(--gray-400); letter-spacing: 0.08em; }
+
+/* ── ANIMATIONS ── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.content-page.on { animation: fade-in-up 0.2s ease-out; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gray-700); border-radius: 2px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main-content { padding: 2rem 1.25rem; }
+  .hero { padding: 2rem; }
+  .hero-title { font-size: 2rem; }
+  .site-footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="#" class="site-logo">zer0try</a>
+  <nav class="site-nav">
+    <a href="#" class="nav-link active">Design System</a>
+    <a href="#" class="nav-link">GitHub</a>
+    <a href="#" class="nav-link">Figma</a>
+    <span class="nav-version">v7.0</span>
+  </nav>
+</header>
+
+<div class="site-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">はじめに</span>
+      <a href="#" class="sidebar-item active" onclick="return false;">概要</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">① ブランドルール</span>
+      <a href="#" class="sidebar-item" onclick="switchTab('brand');return false;">存在意義</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('brand');return false;">パーソナリティ</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('brand');return false;">ロゴ</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('brand');return false;">トーン＆マナー</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">② デザインルール</span>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('color');return false;">Color</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('darkmode');return false;">Dark Mode</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('typography');return false;">Typography</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('layout');return false;">Layout</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('icons');return false;">Icons</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('motion');return false;">Motion</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('materials');return false;">Materials</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('images');return false;">Images</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('design');showSec('components');return false;">Components</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">③ アクセシビリティ</span>
+      <a href="#" class="sidebar-item" onclick="switchTab('a11y');return false;">基本方針</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">④ コミュニケーション</span>
+      <a href="#" class="sidebar-item" onclick="switchTab('comm');return false;">テキストルール</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('comm');return false;">数値・日時</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('comm');return false;">ビジュアル</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">⑤ AI活用ガイドライン</span>
+      <a href="#" class="sidebar-item" onclick="switchTab('ai');return false;">AIルール</a>
+      <a href="#" class="sidebar-item" onclick="switchTab('ai');return false;">System Prompt</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">zer0try — design system v7.0</div>
+      <div class="hero-title">zer0try<br>Design System</div>
+      <div class="hero-sub">デザイナー・エンジニア・AIが共通言語として使うためのガイドライン</div>
+      <div class="hero-tags">
+        <span class="hero-tag">Brand Rules</span>
+        <span class="hero-tag">Design Rules</span>
+        <span class="hero-tag">Accessibility</span>
+        <span class="hero-tag">Communication</span>
+        <span class="hero-tag">AI Guidelines</span>
+      </div>
+    </div>
+
+    <!-- CHAPTER TABS -->
+    <div class="chapter-tabs">
+      <button class="chapter-tab on" onclick="switchTab('brand')">① ブランドルール</button>
+      <button class="chapter-tab" onclick="switchTab('design')">② デザインルール</button>
+      <button class="chapter-tab" onclick="switchTab('a11y')">③ アクセシビリティ</button>
+      <button class="chapter-tab" onclick="switchTab('comm')">④ コミュニケーション</button>
+      <button class="chapter-tab" onclick="switchTab('ai')">⑤ AI活用ガイドライン</button>
+    </div>
+
+    <!-- ① BRAND -->
+    <div id="page-brand" class="content-page on">
+
+      <div class="sec">
+        <div class="sec-ttl">ブランドの存在意義</div>
+        <div style="background:var(--black);color:var(--off-white);border-radius:var(--radius-md);padding:1.75rem 2rem;">
+          <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;line-height:1.5;">RFID時代のスタンダードを作る。</div>
+          <div style="font-size:12px;opacity:.4;margin-top:8px;line-height:1.75;">在庫管理の「正しい状態」を定義し、それをRFIDで実現する基盤。</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">パーソナリティ</div>
+        <div class="sec-sub">すべての表現・判断の基準となる4つの価値観。</div>
+        <div class="pcard"><div class="pcard-en">01 — Decisive</div><div class="pcard-ttl">断言的</div><div class="pcard-body">データを曖昧にしない。在庫の状態は「おそらく」ではなく「確かに」伝える。</div><div class="pcard-eg">「3,847 アイテムが検出された」「在庫精度 99.97%」</div></div>
+        <div class="pcard"><div class="pcard-en">02 — Precise</div><div class="pcard-ttl">精確</div><div class="pcard-body">正しい情報を正しく届ける。技術的な数値は誤魔化さず、信頼できるデータとして提示する。</div><div class="pcard-eg">ISO 8601形式の日時、Monoフォントでの数値表示</div></div>
+        <div class="pcard"><div class="pcard-en">03 — Scalable</div><div class="pcard-ttl">スケーラブル</div><div class="pcard-body">年間1兆タグを処理するインフラである。デザインも小規模から大規模まで破綻せず機能する。</div><div class="pcard-eg">大数の省略表記（1.2T）、グリッドベースのレイアウト</div></div>
+        <div class="pcard"><div class="pcard-en">04 — Transparent</div><div class="pcard-ttl">透明</div><div class="pcard-body">在庫の状態を隠さない。動作・進捗・エラーの原因を把握できる形で提示する。</div><div class="pcard-eg">リアルタイムステータス常時表示、明確なエラーメッセージ</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">ロゴ</div>
+        <div class="sec-sub">カスタムレタリング。回路パターンとゼロ記号（⌀）が埋め込まれた固有のロゴタイプ。常にモノクロームで使用する。</div>
+        <div class="g2" style="margin-bottom:12px;">
+          <div>
+            <div style="background:var(--black);border-radius:var(--radius-md);padding:1.75rem;display:flex;align-items:center;justify-content:center;min-height:90px;">
+              <span style="font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--off-white);letter-spacing:0.04em;">zer0try</span>
+            </div>
+            <p style="font-family:var(--font-mono);font-size:10px;color:var(--gray-400);margin-top:6px;">白ロゴ — 黒・ダーク背景専用</p>
+          </div>
+          <div>
+            <div style="background:var(--off-white);border:0.5px solid var(--gray-700);border-radius:var(--radius-md);padding:1.75rem;display:flex;align-items:center;justify-content:center;min-height:90px;">
+              <span style="font-family:var(--font-mono);font-size:1.5rem;font-weight:500;color:var(--black);letter-spacing:0.04em;">zer0try</span>
+            </div>
+            <p style="font-family:var(--font-mono);font-size:10px;color:var(--gray-400);margin-top:6px;">黒ロゴ — ライト・オフホワイト背景専用</p>
+          </div>
+        </div>
+        <div class="g2">
+          <div class="surface"><span class="lbl" style="color:var(--success);">使用可能</span><p style="font-size:12px;line-height:1.8;">黒背景 → 白ロゴ / ライト背景 → 黒ロゴ<br>クリアスペース: ロゴ高さの25%以上<br>最小サイズ: 印刷80px / 画面40px</p></div>
+          <div class="surface"><span class="lbl" style="color:var(--danger);">使用禁止</span><p style="font-size:12px;line-height:1.8;">色付き背景・色変更・グラデーション<br>変形・回転・低解像度（300dpi未満）</p></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">トーン＆マナー</div>
+        <div class="g2">
+          <div class="surface"><span class="lbl">zer0tryらしい</span><p style="font-size:13px;line-height:1.8;">無駄がない / 静的で力強い / データが語る / 余白が意味を持つ / モノクロームの緊張感</p></div>
+          <div class="surface"><span class="lbl">zer0tryらしくない</span><p style="font-size:13px;line-height:1.8;">賑やかなカラーリング / 感情的・親しみやすさ重視 / 曖昧な表現 / 装飾としての色</p></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ② DESIGN RULES -->
+    <div id="page-design" class="content-page">
+      <div class="sub-nav">
+        <button class="sub-nav-btn" onclick="showSec('color')">Color</button>
+        <button class="sub-nav-btn" onclick="showSec('darkmode')">Dark Mode</button>
+        <button class="sub-nav-btn" onclick="showSec('typography')">Typography</button>
+        <button class="sub-nav-btn" onclick="showSec('layout')">Layout</button>
+        <button class="sub-nav-btn" onclick="showSec('icons')">Icons</button>
+        <button class="sub-nav-btn" onclick="showSec('motion')">Motion</button>
+        <button class="sub-nav-btn" onclick="showSec('materials')">Materials</button>
+        <button class="sub-nav-btn" onclick="showSec('images')">Images</button>
+        <button class="sub-nav-btn" onclick="showSec('components')">Components</button>
+      </div>
+
+      <!-- Color -->
+      <div id="dsec-color" class="dsec">
+        <div class="sec-ttl">Color</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">色は、使うほど力を失う。<br><br>zer0tryのブランドはモノクロームに徹する。黒と白だけで構造・階層・強度を表現することで、デザインの重力を生む。色は装飾ではなく信号として機能すべきであり、そのためには普段は存在しないことが前提になる。プロダクトUIでは、ステータスの識別に必要な場面のみ、セマンティックカラーを解放する。色が画面に現れた瞬間、ユーザーは意味があると知る。</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">ブランドコンテキストではモノクロームのみを使う</div>
+          <div class="rule-body">広告・スライド・ウェブ・ロゴ・マーケティング資料において、すべての色判断はモノクロームを前提に行う。黒・白・グレーだけで意味と階層が伝わることを確認してから仕上げる。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">モノクロームはどのメディア・印刷・画面でも一貫して機能する。色はデバイスや環境によって見え方が変わるが、コントラストの強い黒と白は常に精確に伝わる。</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">同じ色を複数の意味に使わない</div>
+          <div class="rule-body">各セマンティックカラーは1つの意味だけを担う。Success（#00a85a）を「目立たせたい」という理由で使わない。Danger（#d45000）はエラー以外に使わない。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">色の意味が画面ごとに変わると、ユーザーは毎回解読しなければならない。業務系UIでは視認コストが直接オペレーション効率に影響する。</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">色だけで情報を伝えない</div>
+          <div class="rule-body">ステータスを色で示す場合は、必ずバッジテキストまたはアイコンと組み合わせる。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">男性の約8%が色覚特性を持つ。モノクロ印刷・スクリーンショット共有時にも情報が失われない設計が必要。</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">コントラスト比を必ず確認する</div>
+          <div class="rule-body">テキストと背景のコントラスト比はWCAG 2.1 AAレベル（4.5:1以上）を最低基準とする。Gray 600（#b0b0b0）は本文テキストに使用しない。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">在庫管理画面は長時間・高頻度で参照される。コントラストが不十分な文字は視覚的疲労を増し、読み誤りのリスクを高める。</div></div>
+        </div>
+        <div class="card" style="padding:0.75rem 1.25rem;margin-bottom:1.25rem;">
+          <div class="cr-row"><div class="cr-chip" style="background:#0a0a0a;"></div><div class="cr-val">16.7:1</div><div style="font-size:12px;">Black / Off-White — 最高基準 ✓</div></div>
+          <div class="cr-row"><div class="cr-chip" style="background:#5a5a5a;"></div><div class="cr-val">7.2:1</div><div style="font-size:12px;">Gray 400 / Off-White — AA Large ✓</div></div>
+          <div class="cr-row"><div class="cr-chip" style="background:#007a44;"></div><div class="cr-val">5.1:1</div><div style="font-size:12px;">Success text on white — AA ✓</div></div>
+          <div class="cr-row"><div class="cr-chip" style="background:#b0b0b0;"></div><div class="cr-val">2.0:1</div><div style="font-size:12px;color:var(--danger);">Gray 600 on white — 本文禁止 ✗</div></div>
+        </div>
+        <span class="lbl" style="margin-bottom:10px;display:block;">ブランドパレット</span>
+        <div class="g4" style="margin-bottom:1.25rem;">
+          <div><div class="sw" style="background:#0a0a0a;"></div><div class="sw-name">Black</div><div class="sw-hex">#0a0a0a</div><div class="sw-role">背景・主要テキスト</div></div>
+          <div><div class="sw" style="background:#f5f4f0;border:0.5px solid #ddd;"></div><div class="sw-name">Off-White</div><div class="sw-hex">#f5f4f0</div><div class="sw-role">サーフェス</div></div>
+          <div><div class="sw" style="background:#5a5a5a;"></div><div class="sw-name">Gray 400</div><div class="sw-hex">#5a5a5a</div><div class="sw-role">補助テキスト</div></div>
+          <div><div class="sw" style="background:#b0b0b0;"></div><div class="sw-name">Gray 600</div><div class="sw-hex">#b0b0b0</div><div class="sw-role">ボーダー</div></div>
+        </div>
+        <span class="lbl" style="margin-bottom:10px;display:block;">UIセマンティックカラー — プロダクト内のみ</span>
+        <div class="g4">
+          <div><div class="sw" style="background:#00a85a;"></div><div class="sw-name">Success</div><div class="sw-hex">#00a85a</div><div class="sw-role">正常・同期済み</div></div>
+          <div><div class="sw" style="background:#d45000;"></div><div class="sw-name">Danger</div><div class="sw-hex">#d45000</div><div class="sw-role">エラー・異常</div></div>
+          <div><div class="sw" style="background:#b07800;"></div><div class="sw-name">Warning</div><div class="sw-hex">#b07800</div><div class="sw-role">注意・確認待ち</div></div>
+          <div><div class="sw" style="background:#1760a8;"></div><div class="sw-name">Info</div><div class="sw-hex">#1760a8</div><div class="sw-role">情報・リンク</div></div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-darkmode"></div>
+
+      <!-- Dark Mode -->
+      <div id="dsec-darkmode" class="dsec">
+        <div class="sec-ttl">Dark Mode</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">ダークモードは、ライトモードの「反転」ではない。<br><br>照明を落とした部屋で、物の配置は変わらない。zer0tryの情報階層はLight・Darkどちらのモードでも同じ論理で成立する必要がある。背景・サーフェス・インセットという3層の関係性をモードに関わらず維持することが、ユーザーが環境に依存せず同じように画面を読める唯一の根拠になる。</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">ハードコードされた色値を使わない</div>
+          <div class="rule-body"><code>#0a0a0a</code> などの具体的な色値を直接コードに書かない。<code>color.text.primary</code> のようなセマンティックトークンを使用する。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">色値を直接書くと、ダークモード対応のために全コンポーネントを書き直す必要が生じる。トークンは変更を1箇所に集約し、一貫性と保守性を両立する。</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">ダークモードでは背景から段階的に明るくする</div>
+          <div class="rule-body">背景は <code>#0a0a0a</code> を最暗面として、カード・パネルには <code>#1a1a1a</code>、インセット要素には <code>#222222</code> を使用する。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">すべての要素が同じ黒になると、カードと背景の境界が消え、情報の階層が読み取れなくなる。</div></div>
+        </div>
+        <div class="dm-pair">
+          <div>
+            <div class="dm-l">
+              <div class="dm-lbl" style="color:#5a5a5a;">Light</div>
+              <div class="dm-card" style="background:#fff;border:0.5px solid #ddd;"><div style="font-size:12px;font-weight:500;color:#0a0a0a;">在庫品 A-1042</div><div style="font-family:var(--font-mono);font-size:10px;color:#5a5a5a;margin-top:2px;">0x4F2A8C1E</div></div>
+              <div class="dm-card" style="background:#f0f0ec;border:0.5px solid #e0e0da;"><div style="font-size:12px;font-weight:500;color:#0a0a0a;">在庫品 B-0237</div><div style="font-family:var(--font-mono);font-size:10px;color:#5a5a5a;margin-top:2px;">0x3E1B7D2A</div></div>
+            </div>
+            <p style="font-family:var(--font-mono);font-size:9px;color:var(--gray-400);margin-top:4px;">bg #f5f4f0 · surface #fff · inset #f0f0ec</p>
+          </div>
+          <div>
+            <div class="dm-d">
+              <div class="dm-lbl" style="color:#888;">Dark</div>
+              <div class="dm-card" style="background:#1a1a1a;border:0.5px solid #2a2a2a;"><div style="font-size:12px;font-weight:500;color:#f5f4f0;">在庫品 A-1042</div><div style="font-family:var(--font-mono);font-size:10px;color:#888;margin-top:2px;">0x4F2A8C1E</div></div>
+              <div class="dm-card" style="background:#222;border:0.5px solid #333;"><div style="font-size:12px;font-weight:500;color:#f5f4f0;">在庫品 B-0237</div><div style="font-family:var(--font-mono);font-size:10px;color:#888;margin-top:2px;">0x3E1B7D2A</div></div>
+            </div>
+            <p style="font-family:var(--font-mono);font-size:9px;color:var(--gray-400);margin-top:4px;">bg #0a0a0a · surface #1a1a1a · inset #222222</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-typography"></div>
+
+      <!-- Typography -->
+      <div id="dsec-typography" class="dsec">
+        <div class="sec-ttl">Typography</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">フォントは、情報の種類を宣言する。<br><br>zer0tryには性質の異なる3種類のテキストが共存する。ブランドとしての見出し、説明のための本文、そして機械的なデータ。それぞれに専用のフォントを割り当て、混用しない。「このフォントで書かれているものはデータだ」という読み方がUIに浸透したとき、ユーザーはフォントを手がかりに情報を分類できる。タイポグラフィは読まれる前に、意味を伝えている。</div>
+        </div>
+        <div class="card" style="padding:0 1.25rem;margin-bottom:12px;">
+          <div class="type-row"><div class="type-meta">Syne 800 / Display<br>28–40px · -0.02em</div><div style="font-family:var(--font-display);font-size:1.75rem;font-weight:800;letter-spacing:-0.02em;line-height:1.1;">The Standard</div></div>
+          <div class="type-row"><div class="type-meta">Noto Sans JP 500<br>14–16px</div><div style="font-family:var(--font-body);font-size:15px;font-weight:500;">在庫はデータである</div></div>
+          <div class="type-row"><div class="type-meta">Noto Sans JP 400<br>14px · 1.75</div><div style="font-family:var(--font-body);font-size:14px;line-height:1.75;">RFIDによって、在庫は「記録するもの」から「常に更新されるデータ」へと変わる。</div></div>
+          <div class="type-row"><div class="type-meta">Noto Sans JP 300<br>12px · 1.6</div><div style="font-family:var(--font-body);font-size:12px;font-weight:300;color:var(--gray-400);">最終同期: 2025-01-15 14:32:07 UTC+9</div></div>
+          <div class="type-row"><div class="type-meta">DM Mono 400<br>11–12px · +0.08em<br>データ・ID・コードのみ</div><div style="font-family:var(--font-mono);font-size:12px;color:var(--gray-400);letter-spacing:0.08em;">TAG_ID: 0x4F2A8C1E · 847ms</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">Syneは英語の見出しとブランド文言にのみ使用する</div>
+          <div class="rule-body">Syneは日本語グリフを持たないため日本語テキストには使用しない。英語見出し・プロダクト名・キャッチコピーに限定。ウェイトは800と700の2種のみ。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">Syneの幾何学的で力強い字形がzer0tryのブランドトーンを担う。日本語に当てると文字化けや代替フォントへのフォールバックが発生し、精確さを損なう。</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">DM Monoはデータ・ID・コード・タイムスタンプにのみ使用する</div>
+          <div class="rule-body">UIラベル・本文・装飾目的への使用は禁止する。TAG ID・読み取り時間・タイムスタンプ・16進数値がDM Monoの対象。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">等幅フォントは「1」と「l」、「0」と「O」を明確に区別し、桁数の視認を容易にする。「DM Monoで表示 = データ」というルールが全画面で成立する。</div></div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-layout"></div>
+
+      <!-- Layout -->
+      <div id="dsec-layout" class="dsec">
+        <div class="sec-ttl">Layout</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">余白は、コンテンツとコンテンツの関係を語る。<br><br>在庫リスト・メトリクス・ステータス表示が密集するzer0tryのUIにおいて、余白の量が「どれとどれが一緒の意味を持つか」を決める。4の倍数に基づくスペーシングシステムは制約ではなく共通言語だ。デザイナーもエンジニアもAIも同じ数値を参照することで、実装と設計の間にズレが生じない。</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">スペーシングは4の倍数から選択する</div>
+          <div class="rule-body">4px・8px・16px・24px・40px・64pxのいずれかから選択する。中間値（12pxや20pxなど）は例外を除き使用しない。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">スペーシングシステムを持つことで、デザイナーとエンジニアが同じ数値を参照できる。AIがコードを生成する際もこのルールを渡すことで適切な余白が生成される。</div></div>
+        </div>
+        <div class="card" style="padding:0.75rem 1.25rem;margin-bottom:1rem;">
+          <div class="sp-row"><div class="sp-bar" style="width:4px;"></div><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);">4px — xs — アイコン間・インライン要素</div></div>
+          <div class="sp-row"><div class="sp-bar" style="width:8px;"></div><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);">8px — sm — コンポーネント内余白</div></div>
+          <div class="sp-row"><div class="sp-bar" style="width:16px;"></div><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);">16px — md — カード内・セクション内</div></div>
+          <div class="sp-row"><div class="sp-bar" style="width:24px;"></div><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);">24px — lg — グループ間</div></div>
+          <div class="sp-row"><div class="sp-bar" style="width:40px;"></div><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);">40px — xl — セクション間</div></div>
+          <div class="sp-row"><div class="sp-bar" style="width:64px;"></div><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);">64px — 2xl — ページレベル余白</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">ボーダーは0.5pxを標準とし、強調にのみ2pxを使う</div>
+          <div class="rule-body">通常のカード・テーブル・入力フォームは0.5px solid。特定のカードを強調する場合のみ例外的に2px solidを使用できるが、1画面あたり1箇所に限定する。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">0.5pxという極細のボーダーは情報の境界を示しながら視覚的ノイズを最小化する。</div></div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-icons"></div>
+
+      <!-- Icons -->
+      <div id="dsec-icons" class="dsec">
+        <div class="sec-ttl">Icons</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">アイコンは小さいが、ルールへの誠実さが一番見える場所でもある。<br><br>線の太さが1本でも揃っていないアイコンが混在すれば、それだけでブランドの精確さへの信頼が揺らぐ。outlineスタイル・1.5px stroke・3サイズという制約は、誰がアイコンを追加しても全体の手触りが変わらないようにするための約束だ。</div>
+        </div>
+        <div class="card" style="padding:0.75rem 1.25rem;margin-bottom:12px;">
+          <div class="ir-row">
+            <div class="ir-demo"><i class="ti ti-radio" aria-hidden="true" style="font-size:22px;"></i></div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:500;margin-bottom:3px;">outline onlyを使用する</div><div style="font-size:12px;color:var(--gray-400);line-height:1.7;">outlineバリアントのみ使用。filledは使用しない。カスタムアイコンもoutlineで統一する。</div><div class="rule-why" style="margin-top:6px;"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">filledとoutlineの混在は視覚的重さを不均一にする。outlineで統一することで、モノクロームブランドに馴染む軽やかで精確な印象を保てる。</div></div></div>
+          </div>
+          <div class="ir-row">
+            <div class="ir-demo" style="flex-direction:column;gap:3px;"><i class="ti ti-package" aria-hidden="true" style="font-size:16px;"></i><i class="ti ti-package" aria-hidden="true" style="font-size:20px;"></i><i class="ti ti-package" aria-hidden="true" style="font-size:24px;"></i></div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:500;margin-bottom:3px;">サイズは16 / 20 / 24px の3種のみ</div><div style="font-size:12px;color:var(--gray-400);line-height:1.7;">視覚的重さを揃えるため個々を±2px調整することは可。機械的なpx統一より目で見た均一性を優先する。</div><div class="rule-why" style="margin-top:6px;"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">円形と角形は同じpxでも視覚的大きさが違って見える。制約は自由を奪うのではなく、判断を一貫させるためにある。</div></div></div>
+          </div>
+          <div class="ir-row">
+            <div class="ir-demo"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="3" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="13" x2="18" y2="13" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="17" x2="14" y2="17" stroke="currentColor" stroke-width="1.5"/></svg></div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:500;margin-bottom:3px;">stroke-width: 1.5px 固定</div><div style="font-size:12px;color:var(--gray-400);line-height:1.7;">全アイコンで1.5pxを維持する。カスタムアイコンも同じ太さ。サイズが変わっても線の太さはスケールしない。</div><div class="rule-why" style="margin-top:6px;"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">線の太さが揃うことで、アイコンセット全体に統一された手触りが生まれる。</div></div></div>
+          </div>
+        </div>
+        <div class="icon-grid">
+          <div class="ibox"><i class="ti ti-radio" aria-hidden="true"></i>scan</div>
+          <div class="ibox"><i class="ti ti-database" aria-hidden="true"></i>data</div>
+          <div class="ibox"><i class="ti ti-refresh" aria-hidden="true"></i>sync</div>
+          <div class="ibox"><i class="ti ti-chart-bar" aria-hidden="true"></i>analytics</div>
+          <div class="ibox"><i class="ti ti-package" aria-hidden="true"></i>item</div>
+          <div class="ibox"><i class="ti ti-map-pin" aria-hidden="true"></i>location</div>
+          <div class="ibox"><i class="ti ti-shield-check" aria-hidden="true"></i>verified</div>
+          <div class="ibox"><i class="ti ti-clock" aria-hidden="true"></i>timestamp</div>
+          <div class="ibox"><i class="ti ti-alert-triangle" aria-hidden="true"></i>warning</div>
+          <div class="ibox"><i class="ti ti-circle-x" aria-hidden="true"></i>error</div>
+          <div class="ibox"><i class="ti ti-circle-check" aria-hidden="true"></i>success</div>
+          <div class="ibox"><i class="ti ti-arrow-right" aria-hidden="true"></i>action</div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-motion"></div>
+
+      <!-- Motion -->
+      <div id="dsec-motion" class="dsec">
+        <div class="sec-ttl">Motion</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">スキャンは0msで返ってくる。それがzer0tryだ。<br><br>アニメーションは状態の変化を伝えるための補助であり、注目を引くための演出ではない。特にタグ読み取りに「スキャン中...」という遅延を加えることは、プロダクトが持つ本来の速度を隠すことになる。動きが少ないほどシステムへの信頼は増す。リアルタイムという約束をUIが損なってはならない。</div>
+        </div>
+        <div class="card" style="padding:0.75rem 1.25rem;">
+          <div class="mo-row"><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);min-width:90px;">scan</div><div style="font-family:var(--font-mono);font-size:11px;min-width:240px;">0ms — 即時</div><div style="font-size:12px;color:var(--gray-400);">タグ読み取り（遅延禁止）</div></div>
+          <div class="mo-row"><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);min-width:90px;">hover</div><div style="font-family:var(--font-mono);font-size:11px;min-width:240px;">100ms ease-out</div><div style="font-size:12px;color:var(--gray-400);">ボタン・リンクhover</div></div>
+          <div class="mo-row"><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);min-width:90px;">transition</div><div style="font-family:var(--font-mono);font-size:11px;min-width:240px;">200ms ease-in-out</div><div style="font-size:12px;color:var(--gray-400);">状態変化・パネル切り替え</div></div>
+          <div class="mo-row"><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);min-width:90px;">enter</div><div style="font-family:var(--font-mono);font-size:11px;min-width:240px;">300ms cubic-bezier(0.16,1,0.3,1)</div><div style="font-size:12px;color:var(--gray-400);">要素登場・ロード完了</div></div>
+          <div class="mo-row"><div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-400);min-width:90px;">exit</div><div style="font-family:var(--font-mono);font-size:11px;min-width:240px;">150ms ease-in</div><div style="font-size:12px;color:var(--gray-400);">要素退場・削除</div></div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-materials"></div>
+
+      <!-- Materials -->
+      <div id="dsec-materials" class="dsec">
+        <div class="sec-ttl">Materials</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">データが読めないUIは、どんなに美しくても失敗だ。<br><br>ブラーや半透明は視覚的な深度を演出するが、背景が透けることで前景の文字やデータが読みにくくなるリスクを常に持つ。zer0tryの表面はすべてソリッドでなければならない。背景・カード・インセットの3層はそれぞれ異なる明度を持ち、その差がそのまま情報の階層になる。</div>
+        </div>
+        <div class="g3">
+          <div class="surface"><span class="lbl">Level 0 — Page</span><p style="font-size:12px;line-height:1.75;">ページ背景<br><code>Light: #f5f4f0</code><br><code>Dark: #0a0a0a</code></p></div>
+          <div class="card"><span class="lbl">Level 1 — Surface</span><p style="font-size:12px;line-height:1.75;">カード・パネル<br><code>Light: #ffffff</code><br><code>Dark: #1a1a1a</code></p></div>
+          <div class="surface"><span class="lbl">Level 2 — Inset</span><p style="font-size:12px;line-height:1.75;">カード内サブ要素<br><code>Light: #f0f0ec</code><br><code>Dark: #222222</code></p></div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-images"></div>
+
+      <!-- Images -->
+      <div id="dsec-images" class="dsec">
+        <div class="sec-ttl">Images</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">機器そのものが、最も雄弁なメッセージだ。<br><br>RFIDスキャナやタグは、その精密な造形の中にzer0tryの価値を体現している。人物を加えることは、その主役をユースケースに変えてしまう。ニュートラルな背景に機器だけを置くCGレンダリング品質のビジュアルは、「このプロダクトは精確に設計されている」という印象を言葉なしで伝える。</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">プロダクト画像はCGレンダリング品質またはスタジオ撮影を使用する</div>
+          <div class="rule-body">CGレンダリングまたはスタジオ品質の撮影（白・グレー・黒の制御された背景）を使用する。現場スナップ・ストック写真の無加工使用・低解像度画像は使用しない。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">粗いスナップ写真はプロダクトの精確さというブランド価値と矛盾する。zer0tryの信頼性はビジュアルの品質にも反映される。</div></div>
+        </div>
+        <div class="g2" style="margin-bottom:1rem;">
+          <div>
+            <div class="img-demo" style="background:#e8e8e4;"><span style="font-family:var(--font-mono);font-size:10px;color:#888;letter-spacing:0.06em;">CG RENDER · NEUTRAL BG · NO PEOPLE</span></div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;">
+              <span style="font-family:var(--font-mono);font-size:9px;background:var(--gray-900);padding:2px 7px;border-radius:3px;color:var(--gray-400);">✓ CGレンダリング</span>
+              <span style="font-family:var(--font-mono);font-size:9px;background:var(--gray-900);padding:2px 7px;border-radius:3px;color:var(--gray-400);">✓ ニュートラル背景</span>
+              <span style="font-family:var(--font-mono);font-size:9px;background:var(--gray-900);padding:2px 7px;border-radius:3px;color:var(--gray-400);">✓ 人物なし</span>
+            </div>
+          </div>
+          <div>
+            <div class="img-demo" style="background:#e8ddd0;"><span style="font-family:var(--font-mono);font-size:10px;color:#888;letter-spacing:0.06em;">COLORFUL · PEOPLE · STOCK NG</span></div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;">
+              <span style="font-family:var(--font-mono);font-size:9px;background:rgba(212,80,0,0.08);padding:2px 7px;border-radius:3px;color:var(--danger);">✗ カラフルな背景</span>
+              <span style="font-family:var(--font-mono);font-size:9px;background:rgba(212,80,0,0.08);padding:2px 7px;border-radius:3px;color:var(--danger);">✗ 人物が主役</span>
+            </div>
+          </div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">AIで画像を生成する際のプロンプト基準</div>
+          <div class="rule-body">以下の要素を必ず含める：<br><code class="code-block">"RFID [scanner/tag/device], CGI render, product photography, neutral gray background, studio lighting, no people, monochrome grade, industrial precision, high resolution"</code></div>
+        </div>
+      </div>
+
+      <div class="dsec-divider" id="dd-components"></div>
+
+      <!-- Components -->
+      <div id="dsec-components" class="dsec">
+        <div class="sec-ttl">Components</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">同じコンポーネントでも、置かれる文脈が意味を決める。<br><br>「バッジ」はブランド資料の中では黒白で存在し、プロダクトUIの中ではステータスカラーで機能する。この使い分けをコンポーネントレベルで定義しておくことで、作る人が誰であっても迷わない。コンポーネントはパーツではなく、文脈を持った判断の単位だ。</div>
+        </div>
+        <div class="g2" style="margin-bottom:12px;">
+          <div class="card">
+            <span class="lbl">ボタン — 共通（モノクローム）</span>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;">
+              <button class="btn-p"><i class="ti ti-radio" aria-hidden="true" style="font-size:13px;"></i>Primary</button>
+              <button class="btn-s">Secondary</button>
+            </div>
+          </div>
+          <div class="card">
+            <span class="lbl" style="margin-bottom:8px;display:block;">ステータスバッジ — UIのみ</span>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+              <span class="badge b-ok">Synced</span>
+              <span class="badge b-warn">Pending</span>
+              <span class="badge b-err">Error</span>
+              <span class="badge b-off">Offline</span>
+            </div>
+            <span class="lbl" style="margin-bottom:6px;display:block;">バッジ — ブランド文脈</span>
+            <div style="display:flex;gap:6px;">
+              <span class="badge b-blk">Active</span>
+              <span class="badge b-off">Standard</span>
+            </div>
+          </div>
+        </div>
+        <div class="g3">
+          <div class="stat"><div class="stat-l">Total Tags</div><div class="stat-v">1.2T</div><div class="stat-s">+3.4% / month</div></div>
+          <div class="stat"><div class="stat-l">Accuracy</div><div class="stat-v">99.97%</div><div class="stat-s">Target: 100%</div></div>
+          <div class="stat"><div class="stat-l">Latency</div><div class="stat-v">12ms</div><div class="stat-s">P95: 38ms</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ ACCESSIBILITY -->
+    <div id="page-a11y" class="content-page">
+      <div class="sec-ttl" style="margin-bottom:0.25rem;">基本方針</div>
+      <div class="sec-sub">モノクロームブランドだからこそ、構造・コントラスト・インタラクションの明示で意味を伝える。</div>
+      <div class="card" style="padding:0.75rem 1.25rem;">
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">色だけで情報を伝えない</div><div class="ck-s">バッジテキスト + アイコン + 色の組み合わせで伝える。</div></div></div>
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">テキストコントラスト比 4.5:1 以上（WCAG 2.1 AA）</div></div></div>
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">すべての操作をキーボードで完結できる</div><div class="ck-s">フォーカスリング: box-shadow: 0 0 0 2px #0a0a0a</div></div></div>
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">意味のある画像すべてに代替テキストを付与する</div></div></div>
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">リアルタイム更新を aria-live で通知する</div></div></div>
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">エラーメッセージは原因と対処を明示する</div></div></div>
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">prefers-reduced-motion を尊重する</div></div></div>
+        <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">タッチターゲットは最小 44×44px を確保する</div></div></div>
+      </div>
+    </div>
+
+    <!-- ④ COMMUNICATION -->
+    <div id="page-comm" class="content-page">
+
+      <div class="sec">
+        <div class="sec-ttl">テキストルール</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">zer0tryの言葉は、データと同じ精度でなければならない。<br><br>在庫管理の現場で「おそらく」という言葉は存在しない。あるかないか、正常か異常か、完了か未完了か。UIのテキストがその二値性を反映することで、ユーザーはシステムを信頼できる。文章が長いほど、伝わる速度は遅くなる。データが主語になる短い断言が、zer0tryの言語だ。</div>
+        </div>
+        <div class="do-dont-grid">
+          <div class="do"><div class="wl">使う表現</div><div class="wt">「検出された」「更新された」「完了」— データが主語。短く、断言的。</div></div>
+          <div class="dont"><div class="wl">使わない表現</div><div class="wt">「おそらく」「かもしれません」「少々お待ちください」</div></div>
+          <div class="do"><div class="wl">ボタンラベル</div><div class="wt">動詞の終止形<br>「スキャン開始」「エクスポート」「確認」</div></div>
+          <div class="dont"><div class="wl">避ける</div><div class="wt">「クリックしてください」「操作する」など説明的なラベル</div></div>
+          <div class="do"><div class="wl">エラーメッセージ</div><div class="wt">原因 → 対処の順<br>「タイムアウト(3s) — アンテナ距離を確認」</div></div>
+          <div class="dont"><div class="wl">避ける</div><div class="wt">「エラーが発生しました」「問題が起きた可能性があります」</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">数値・日時の表記ルール</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">表記の揺れは、データへの不信を生む。<br><br>「99.97%」と「99.9%」は数値として違う。「2025/1/15」と「2025-01-15 14:32:07 UTC+9」は情報量として違う。zer0tryが扱う数値は在庫の意思決定に直結するため、読み方・精度・タイムゾーンの解釈が揺れることは許されない。表記を統一することは、数値への信頼を設計することだ。</div>
+        </div>
+        <div class="card" style="padding:0.75rem 1.25rem;">
+          <div class="tkrow"><div class="tkkey">大きな数値</div><div class="tkval">T / B / M で省略　1.2T · 847M · 3.4B（単位は大文字）</div></div>
+          <div class="tkrow"><div class="tkkey">精度・割合</div><div class="tkval">小数第2位まで　99.97%（切り捨て・四捨五入を明示）</div></div>
+          <div class="tkrow"><div class="tkkey">レイテンシ・時間</div><div class="tkval">ms単位　12ms · P95: 38ms（DM Monoフォント使用）</div></div>
+          <div class="tkrow"><div class="tkkey">日時</div><div class="tkval">ISO 8601　2025-01-15 14:32:07 UTC+9（和暦・スラッシュ禁止）</div></div>
+          <div class="tkrow"><div class="tkkey">TAG ID / hex値</div><div class="tkval">0x プレフィックス + 大文字　0x4F2A8C1E（DM Mono）</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">写真・動画・イメージ画像</div>
+        <div class="principle">
+          <div class="principle-kw">Design Principle</div>
+          <div class="principle-body">見た目が荒ければ、中身も荒いと思われる。<br><br>意思決定者がzer0tryを評価するとき、最初に目に入るのはビジュアルだ。低品質なスナップ写真や感情的なシーン写真は、精確さというブランド価値と矛盾する。CGレンダリング品質の機器画像は「このプロダクトは細部まで考えられている」という印象を、言葉より先に伝える。スライドのグラフをグレースケールで作るのも同じ理由だ。色に頼らず構造で語ることが、zer0tryらしいビジュアルコミュニケーションだ。</div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">プロダクト画像はCGレンダリング品質またはスタジオ撮影で統一する</div>
+          <div class="rule-body">CGレンダリングまたはスタジオ品質の撮影（白・グレー・黒の制御された背景）を使用する。人物・カラフルな背景・ストック写真の無加工使用・低解像度画像は使用しない。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">在庫管理ツールを選ぶ担当者は感情的な訴求より機器の品質感を視覚で判断する。</div></div>
+        </div>
+        <div class="rule-block">
+          <div class="rule-ttl">スライド・資料はモノクローム・グレースケールで作成する</div>
+          <div class="rule-body">1スライド1メッセージ。背景は #0a0a0a または #f5f4f0 のみ。グラフもグレースケールで作成する。カラーグラフ・カラー強調テキスト禁止。</div>
+          <div class="rule-why"><div class="rule-why-lbl">なぜ</div><div class="rule-why-txt">グレースケールのグラフは色ではなく数値と構造でデータを語ることを強いる。それがzer0tryらしい。</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ⑤ AI -->
+    <div id="page-ai" class="content-page">
+
+      <div class="sec">
+        <div class="sec-ttl">AIでデザインを一貫させる</div>
+        <div class="ai-flow">
+          <div class="ai-step"><div class="ai-step-ttl">Input</div>このガイドラインをSystem Promptとして渡す</div>
+          <div class="ai-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+          <div class="ai-step"><div class="ai-step-ttl">Generate</div>UI / コピー / コード / 画像を生成</div>
+          <div class="ai-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+          <div class="ai-step"><div class="ai-step-ttl">Review</div>チェックリストで人間がレビュー</div>
+          <div class="ai-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+          <div class="ai-step"><div class="ai-step-ttl">Refine</div>違反修正 / ガイドライン更新</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">AIを使う際のルール</div>
+        <div class="card" style="padding:0.75rem 1.25rem;">
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">必ずSystem Promptとしてこのガイドラインを渡す</div><div class="ck-s">UI生成・コピー執筆・コーディングのいずれでも、トークン・トーン・カラーポリシーを必ず含める。</div></div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">AIの出力はそのまま使わない — 必ず人間がレビューする</div></div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">AIにデザインルールの変更・拡張を委ねない</div></div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-check" aria-hidden="true"></i></div><div><div class="ck-t">画像生成AIの出力もブランドチェックを行う</div></div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">System Prompt テンプレート</div>
+        <div class="card" style="background:var(--gray-900);">
+          <pre style="font-family:var(--font-mono);font-size:11px;line-height:1.95;color:var(--black);white-space:pre-wrap;word-break:break-all;"><span style="color:var(--gray-400);">## Identity</span>
+You are a designer/copywriter for zer0try, an RFID inventory
+infrastructure platform — the global standard for real-time stock.
+
+<span style="color:var(--gray-400);">## Personality</span>
+Decisive · Precise · Scalable · Transparent
+
+<span style="color:var(--gray-400);">## Color Policy — CRITICAL</span>
+BRAND: monochrome only — #0a0a0a / #f5f4f0 / grays.
+UI only: semantic colors for functional status ONLY.
+success #00a85a · danger #d45000 · warning #b07800 · info #1760a8
+Dark mode: success #008a48 · danger #b04200
+Dark mode surfaces: bg #0a0a0a · surface #1a1a1a · inset #222222
+
+<span style="color:var(--gray-400);">## Icons</span>
+Tabler Icons outline only. stroke-width: 1.5px. Sizes: 16/20/24px.
+
+<span style="color:var(--gray-400);">## Tone</span>
+Declarative. Data as subject. No hedging. Errors: cause→remedy.
+
+<span style="color:var(--gray-400);">## Tokens</span>
+Fonts: Syne (EN headings) / Noto Sans JP (body) / DM Mono (data)
+Spacing: 4/8/16/24/40/64px. Border: 0.5px. Radius: 6px/12px.
+Motion: 0ms scan · 200ms transition. Numbers: T/B/M · ISO 8601.</pre>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sec">
+        <div class="sec-ttl">AIレビューチェックリスト</div>
+        <div class="card" style="padding:0.75rem 1.25rem;">
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">ブランドコンテキストで色を使っていないか</div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">曖昧語（「おそらく」「かもしれません」等）が含まれていないか</div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">数値・日時がフォーマットルール通りか</div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">アイコンがoutline・1.5px stroke・3サイズのいずれかか</div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">フォントの役割（Syne英語のみ / Noto / Mono）が正しいか</div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">スペーシングが4の倍数から選択されているか</div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">画像がCGレンダリング品質・ニュートラル背景・人物なしを満たすか</div></div>
+          <div class="ck-row"><div class="ck-dot"><i class="ti ti-checkbox" aria-hidden="true"></i></div><div class="ck-t">ダークモードトークンが正しく適用されているか</div></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">zer0try</div>
+  <div class="footer-meta">Design System v7.0 — Confidential</div>
+</footer>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.content-page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.chapter-tab').forEach(b => b.classList.remove('on'));
+  document.getElementById('page-' + id).classList.add('on');
+  const ids = ['brand', 'design', 'a11y', 'comm', 'ai'];
+  document.querySelectorAll('.chapter-tab')[ids.indexOf(id)].classList.add('on');
+  if (id === 'design') {
+    document.querySelectorAll('.dsec, .dsec-divider').forEach(s => s.style.display = '');
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showSec(id) {
+  switchTab('design');
+  const secs = document.querySelectorAll('.dsec');
+  const divs = document.querySelectorAll('.dsec-divider');
+  const target = document.getElementById('dsec-' + id);
+  const allVisible = Array.from(secs).every(s => s.style.display !== 'none');
+  if (allVisible) {
+    secs.forEach(s => s.style.display = 'none');
+    divs.forEach(d => d.style.display = 'none');
+    if (target) target.style.display = 'block';
+  } else {
+    secs.forEach(s => s.style.display = '');
+    divs.forEach(d => d.style.display = '');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+</script>
+</body>
+</html>
